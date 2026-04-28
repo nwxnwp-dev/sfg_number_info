@@ -10,60 +10,80 @@
     :root {
       --bg:#0d1117; --surface:#161b22; --surface2:#1c2333; --border:#30363d;
       --text:#e6edf3; --text-muted:#7d8590;
-      --true:#e4004b; --true-dim:rgba(228,0,75,0.15);
-      --tot:#0066cc;  --tot-dim:rgba(0,102,204,0.15);
-      --ais-gold:#f4c430; --ais-dim:rgba(27,95,168,0.15);
-      --bb3:#ff6600;  --bb3-dim:rgba(255,102,0,0.15);
-      --dtac:#e11d48; --dtac-dim:rgba(225,29,72,0.15);
-      --nt:#0ea5e9;   --nt-dim:rgba(14,165,233,0.15);
-      --active:#2ea043; --active-bg:rgba(46,160,67,0.12);
-      --cancel:#da3633; --cancel-bg:rgba(218,54,51,0.12);
-      --inactive:#6e7681; --inactive-bg:rgba(110,118,129,0.12);
+      /* TRUE */
+      --true:#e4004b;      --true-dim:rgba(228,0,75,0.15);
+      /* TOT */
+      --tot:#0066cc;       --tot-dim:rgba(0,102,204,0.15);
+      /* AIS — CI Green */
+      --ais:#00843d;       --ais-dim:rgba(0,132,61,0.15);
+      /* 3BB */
+      --bb3:#ff6600;       --bb3-dim:rgba(255,102,0,0.15);
+      /* DTAC */
+      --dtac:#e11d48;      --dtac-dim:rgba(225,29,72,0.15);
+      /* NT — CI Yellow */
+      --nt:#f5a800;        --nt-dim:rgba(245,168,0,0.15);
+
+      --active:#2ea043;    --active-bg:rgba(46,160,67,0.12);
+      --cancel:#da3633;    --cancel-bg:rgba(218,54,51,0.12);
+      --inactive:#6e7681;  --inactive-bg:rgba(110,118,129,0.12);
       --h1:#0d1117; --h2:#1c2333; --tabs-bg:#161b22; --filter-bg:#13181f;
       --stat-num:#58a6ff; --branch-color:#58a6ff; --phone-color:#79c0ff;
-      --page-internet:#388bfd; --page-phone:#a78bfa;
+      --page-internet:#388bfd; --page-phone:#a78bfa; --page-cancel:#da3633;
       --highlight-bg:#ffd70033;
+      --price-color:#a3e635;
     }
     html.light {
       --bg:#f6f8fa; --surface:#ffffff; --surface2:#f0f2f5; --border:#d0d7de;
       --text:#1f2328; --text-muted:#636c76;
-      --true:#c9003e; --true-dim:rgba(201,0,62,0.08);
-      --tot:#0550ae;  --tot-dim:rgba(5,80,174,0.08);
-      --ais-gold:#b58600; --ais-dim:rgba(5,80,174,0.08);
-      --bb3:#d44000;  --bb3-dim:rgba(212,64,0,0.08);
-      --dtac:#be123c; --dtac-dim:rgba(190,18,60,0.08);
-      --nt:#0284c7;   --nt-dim:rgba(2,132,199,0.08);
-      --active:#1a7f37; --active-bg:rgba(26,127,55,0.10);
-      --cancel:#cf222e; --cancel-bg:rgba(207,34,46,0.10);
+      --true:#c9003e;  --true-dim:rgba(201,0,62,0.08);
+      --tot:#0550ae;   --tot-dim:rgba(5,80,174,0.08);
+      --ais:#006b31;   --ais-dim:rgba(0,107,49,0.08);
+      --bb3:#d44000;   --bb3-dim:rgba(212,64,0,0.08);
+      --dtac:#be123c;  --dtac-dim:rgba(190,18,60,0.08);
+      --nt:#b87900;    --nt-dim:rgba(184,121,0,0.08);
+      --active:#1a7f37;   --active-bg:rgba(26,127,55,0.10);
+      --cancel:#cf222e;   --cancel-bg:rgba(207,34,46,0.10);
       --inactive:#636c76; --inactive-bg:rgba(99,108,118,0.10);
       --h1:#ffffff; --h2:#f6f8fa; --tabs-bg:#ffffff; --filter-bg:#eef0f3;
       --stat-num:#0550ae; --branch-color:#0550ae; --phone-color:#0550ae;
       --page-internet:#0550ae; --page-phone:#7c3aed;
       --highlight-bg:#ffd70055;
+      --price-color:#4a7c1a;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{transition:background .3s,color .3s;}
     body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:16px;line-height:1.6;}
 
-    /* HEADER */
+    /* ── HEADER ── */
     header{background:linear-gradient(135deg,var(--h1) 0%,var(--h2) 100%);border-bottom:1px solid var(--border);padding:14px 40px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:200;backdrop-filter:blur(12px);}
     .logo-badge{width:46px;height:46px;background:linear-gradient(135deg,#1f6feb,#388bfd);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#fff;flex-shrink:0;box-shadow:0 4px 14px rgba(31,111,235,.4);}
     .header-text h1{font-size:1.3rem;font-weight:700;letter-spacing:.02em;}
     .header-text p{font-size:.82rem;color:var(--text-muted);}
-    .header-stats{margin-left:auto;display:flex;gap:20px;}
+    .header-stats{margin-left:auto;display:flex;gap:20px;align-items:center;}
     .stat-item{text-align:center;}
-    .stat-item .num{font-size:1.3rem;font-weight:700;color:var(--stat-num);display:block;}
-    .stat-item .lbl{font-size:.72rem;color:var(--text-muted);}
+    .stat-item .num{font-size:1.3rem;font-weight:700;color:var(--stat-num);display:block;white-space:nowrap;}
+    .stat-item .lbl{font-size:.72rem;color:var(--text-muted);white-space:nowrap;}
+    .stat-item.price-stat .num{color:var(--price-color);}
+    .stat-divider{width:1px;height:32px;background:var(--border);}
 
-    /* PAGE SWITCHER */
+    /* ── PAGE SWITCHER ── */
     .page-switcher{display:flex;align-items:center;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:4px;flex-shrink:0;}
     .page-btn{display:flex;align-items:center;gap:7px;padding:7px 18px;border-radius:9px;border:none;background:transparent;font-family:'Sarabun',sans-serif;font-size:.88rem;font-weight:700;color:var(--text-muted);cursor:pointer;transition:all .22s;white-space:nowrap;}
     .page-btn:hover{color:var(--text);background:var(--border);}
     .page-btn.active-page{color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.3);}
     .page-btn[data-page="internet"].active-page{background:var(--page-internet);}
     .page-btn[data-page="phone"].active-page{background:var(--page-phone);}
+    .page-btn[data-page="cancel"].active-page{background:var(--page-cancel);}
 
-    /* BUTTONS */
+    /* ── CANCEL SUB-SWITCHER ── */
+    .cancel-sub-row{display:none;align-items:center;gap:8px;padding:8px 0 10px;}
+    .cancel-sub-row.vis{display:flex;}
+    .cancel-sub-label{font-size:.7rem;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;}
+    .cancel-sub-btn{padding:4px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-family:'Sarabun',sans-serif;font-size:.82rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;white-space:nowrap;}
+    .cancel-sub-btn:hover{background:var(--border);color:var(--text);}
+    .cancel-sub-btn.active{background:var(--cancel);border-color:var(--cancel);color:#fff;}
+
+    /* ── BUTTONS ── */
     .refresh-btn{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 14px;cursor:pointer;display:flex;align-items:center;gap:6px;font-family:'Sarabun',sans-serif;font-size:.82rem;font-weight:600;color:var(--text-muted);transition:all .2s;flex-shrink:0;}
     .refresh-btn:hover{background:var(--border);color:var(--text);}
     .refresh-btn.spinning .spin-icon{display:inline-block;animation:spin .7s linear infinite;}
@@ -75,27 +95,27 @@
     .toggle-thumb{width:14px;height:14px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.3);}
     html.light .toggle-thumb{transform:translateX(16px);}
 
-    /* TABS */
+    /* ── TABS ── */
     .tabs-wrapper{padding:16px 40px 0;border-bottom:1px solid var(--border);background:var(--tabs-bg);position:sticky;top:75px;z-index:150;}
     .tabs{display:flex;gap:4px;}
-    .tab-btn{padding:10px 26px;border:none;border-radius:8px 8px 0 0;background:transparent;color:var(--text-muted);font-family:'Sarabun',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:2px solid transparent;transition:all .2s;position:relative;bottom:-1px;}
+    .tab-btn{padding:10px 26px;border:none;border-radius:8px 8px 0 0;background:transparent;color:var(--text-muted);font-family:'Sarabun',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;border-bottom:2px solid transparent;transition:all .2s;position:relative;bottom:-1px;white-space:nowrap;}
     .tab-btn:hover{background:var(--surface2);color:var(--text);}
     .tab-btn.active-tab{color:var(--text);background:var(--bg);}
-    .tab-btn[data-carrier="TRUE"].active-tab{border-color:var(--true);}
-    .tab-btn[data-carrier="TOT"].active-tab{border-color:var(--tot);}
-    .tab-btn[data-carrier="AIS"].active-tab{border-color:var(--ais-gold);}
-    .tab-btn[data-carrier="3BB"].active-tab{border-color:var(--bb3);}
-    .tab-btn[data-carrier="DTAC"].active-tab{border-color:var(--dtac);}
-    .tab-btn[data-carrier="NT"].active-tab{border-color:var(--nt);}
-    .carrier-dot{width:9px;height:9px;border-radius:50%;}
-    .dot-TRUE{background:var(--true);}.dot-TOT{background:var(--tot);}.dot-AIS{background:var(--ais-gold);}.dot-3BB{background:var(--bb3);}
-    .dot-DTAC{background:var(--dtac);}.dot-NT{background:var(--nt);}
+    .tab-btn[data-carrier="TRUE"].active-tab {border-color:var(--true);}
+    .tab-btn[data-carrier="TOT"].active-tab  {border-color:var(--tot);}
+    .tab-btn[data-carrier="AIS"].active-tab  {border-color:var(--ais);}
+    .tab-btn[data-carrier="3BB"].active-tab  {border-color:var(--bb3);}
+    .tab-btn[data-carrier="DTAC"].active-tab {border-color:var(--dtac);}
+    .tab-btn[data-carrier="NT"].active-tab   {border-color:var(--nt);}
+    .carrier-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+    .dot-TRUE{background:var(--true);}  .dot-TOT{background:var(--tot);}
+    .dot-AIS {background:var(--ais);}   .dot-3BB{background:var(--bb3);}
+    .dot-DTAC{background:var(--dtac);} .dot-NT {background:var(--nt);}
     .tab-count{font-size:.7rem;background:var(--surface2);border:1px solid var(--border);padding:1px 7px;border-radius:20px;color:var(--text-muted);}
 
-    /* FILTER BAR */
+    /* ── FILTER BAR ── */
     .filter-bar{background:var(--filter-bg);border-bottom:1px solid var(--border);padding:10px 40px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:sticky;top:131px;z-index:140;}
     .filter-bar.hidden{display:none;}
-
     .search-wrap{position:relative;flex:1;min-width:180px;max-width:320px;}
     .search-icon-lbl{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:.85rem;pointer-events:none;}
     .search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:7px 30px 7px 32px;font-family:'Sarabun',sans-serif;font-size:.85rem;color:var(--text);outline:none;transition:border-color .2s;}
@@ -103,11 +123,9 @@
     .search-input::placeholder{color:var(--text-muted);}
     .search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:.9rem;padding:2px;display:none;line-height:1;}
     .search-clear.vis{display:block;}
-
     .f-divider{width:1px;height:22px;background:var(--border);flex-shrink:0;}
     .filter-group{display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
     .f-label{font-size:.7rem;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;}
-
     .sf-btn{padding:5px 11px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-family:'Sarabun',sans-serif;font-size:.78rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .18s;white-space:nowrap;}
     .sf-btn:hover{border-color:var(--text-muted);color:var(--text);}
     .sf-btn.active{color:#fff;}
@@ -115,24 +133,24 @@
     .sf-btn[data-status="active"].active {background:var(--active);border-color:var(--active);}
     .sf-btn[data-status="cancel"].active {background:var(--cancel);border-color:var(--cancel);}
     .sf-btn[data-status="other"].active  {background:var(--inactive);border-color:var(--inactive);}
-
     .company-sel{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 9px;font-family:'Sarabun',sans-serif;font-size:.8rem;color:var(--text);outline:none;cursor:pointer;max-width:210px;}
     .company-sel:focus{border-color:var(--stat-num);}
-
     .note-toggle{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:20px;border:1px solid var(--border);background:var(--surface);cursor:pointer;font-family:'Sarabun',sans-serif;font-size:.78rem;font-weight:600;color:var(--text-muted);transition:all .18s;white-space:nowrap;}
     .note-toggle:hover{border-color:var(--text-muted);color:var(--text);}
     .note-toggle.active{background:rgba(251,191,36,.12);border-color:rgba(251,191,36,.5);color:#fbbf24;}
     .nt-dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:background .18s;flex-shrink:0;}
     .note-toggle.active .nt-dot{background:#fbbf24;}
-
     .f-result{margin-left:auto;font-size:.77rem;color:var(--text-muted);white-space:nowrap;}
     .f-result .cnt{color:var(--stat-num);font-weight:700;}
-
     .reset-btn{padding:4px 9px;border-radius:6px;border:1px solid var(--border);background:transparent;font-family:'Sarabun',sans-serif;font-size:.74rem;color:var(--text-muted);cursor:pointer;transition:all .18s;display:none;}
     .reset-btn.vis{display:block;}
     .reset-btn:hover{background:var(--border);color:var(--text);}
 
-    /* MAIN */
+    /* ── GROUP PRICE TOTAL ── */
+    .g-price-total{display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:20px;font-size:.78rem;font-weight:700;font-family:'Courier New',monospace;color:var(--price-color);background:rgba(163,230,53,.08);border:1px solid rgba(163,230,53,.3);white-space:nowrap;}
+    html.light .g-price-total{background:rgba(74,124,26,.08);border-color:rgba(74,124,26,.3);}
+
+    /* ── MAIN ── */
     main{padding:28px 40px;}
     .page-section{display:none;}
     .page-section.active-section{display:block;}
@@ -146,90 +164,121 @@
     .error-wrap p{color:var(--text-muted);font-size:.88rem;line-height:1.8;margin-bottom:6px;}
     .error-wrap code{font-size:.78rem;background:var(--surface2);padding:2px 8px;border-radius:4px;color:#79c0ff;word-break:break-all;}
 
-    /* BANNER */
+    /* ── BANNER ── */
     .carrier-banner{border-radius:14px;padding:20px 24px;margin-bottom:24px;display:flex;align-items:center;gap:18px;border:1px solid;position:relative;overflow:hidden;}
     .carrier-banner::before{content:'';position:absolute;top:0;right:0;width:200px;height:100%;opacity:.06;background:radial-gradient(circle at 70% 50%,currentColor 0%,transparent 70%);}
-    .banner-TRUE{background:var(--true-dim);border-color:rgba(228,0,75,.3);color:var(--true);}
-    .banner-TOT {background:var(--tot-dim); border-color:rgba(0,102,204,.3);color:var(--tot);}
-    .banner-AIS {background:var(--ais-dim); border-color:rgba(244,196,48,.3);color:var(--ais-gold);}
-    .banner-3BB {background:var(--bb3-dim); border-color:rgba(255,102,0,.3);color:var(--bb3);}
-    .banner-DTAC{background:var(--dtac-dim);border-color:rgba(225,29,72,.3);color:var(--dtac);}
-    .banner-NT  {background:var(--nt-dim);  border-color:rgba(14,165,233,.3);color:var(--nt);}
-    .carrier-logo{width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;flex-shrink:0;}
-    .logo-TRUE{background:var(--true);}.logo-TOT{background:var(--tot);}.logo-AIS{background:linear-gradient(135deg,#1b5fa8,#f4c430);}.logo-3BB{background:var(--bb3);}
-    .logo-DTAC{background:linear-gradient(135deg,#e11d48,#fb7185);}.logo-NT{background:linear-gradient(135deg,#0284c7,#38bdf8);}
+    .banner-TRUE{background:var(--true-dim); border-color:rgba(228,0,75,.3);   color:var(--true);}
+    .banner-TOT {background:var(--tot-dim);  border-color:rgba(0,102,204,.3);  color:var(--tot);}
+    .banner-AIS {background:var(--ais-dim);  border-color:rgba(0,132,61,.3);   color:var(--ais);}
+    .banner-3BB {background:var(--bb3-dim);  border-color:rgba(255,102,0,.3);  color:var(--bb3);}
+    .banner-DTAC{background:var(--dtac-dim); border-color:rgba(225,29,72,.3);  color:var(--dtac);}
+    .banner-NT  {background:var(--nt-dim);   border-color:rgba(245,168,0,.3);  color:var(--nt);}
+    .carrier-logo{width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;flex-shrink:0;}
+    .logo-TRUE{background:var(--true);            color:#fff;}
+    .logo-TOT {background:var(--tot);             color:#fff;}
+    .logo-AIS {background:#00843d;                color:#fff;}
+    .logo-3BB {background:var(--bb3);             color:#fff;}
+    .logo-DTAC{background:linear-gradient(135deg,#e11d48,#fb7185); color:#fff;}
+    .logo-NT  {background:#f5a800;                color:#1a1a1a;}
     .banner-info h2{font-size:1.25rem;font-weight:700;}
     .banner-info p{font-size:.85rem;opacity:.7;}
     .banner-pills{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
-    .pill{padding:3px 12px;border-radius:20px;font-size:.78rem;font-weight:600;border:1px solid;}
-    .pill-active{background:var(--active-bg);border-color:var(--active);color:var(--active);}
-    .pill-cancel{background:var(--cancel-bg);border-color:var(--cancel);color:var(--cancel);}
-    .pill-inactive{background:var(--inactive-bg);border-color:var(--inactive);color:var(--inactive);}
+    .pill{padding:3px 12px;border-radius:20px;font-size:.78rem;font-weight:600;border:1px solid;white-space:nowrap;}
+    .pill-active  {background:var(--active-bg);   border-color:var(--active);   color:var(--active);}
+    .pill-cancel  {background:var(--cancel-bg);   border-color:var(--cancel);   color:var(--cancel);}
+    .pill-inactive{background:var(--inactive-bg); border-color:var(--inactive); color:var(--inactive);}
+    .pill-price   {background:rgba(163,230,53,.1); border-color:rgba(163,230,53,.4); color:var(--price-color);font-family:'Courier New',monospace;}
+    html.light .pill-price{background:rgba(74,124,26,.08);border-color:rgba(74,124,26,.3);}
 
-    /* GROUPS & TABLE */
+    /* ── GROUPS & TABLE ── */
     .group-section{margin-bottom:24px;}
     .group-section.g-hidden{display:none;}
     .group-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-    .group-label{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:7px;font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}
-    .g-row-cnt{font-size:.74rem;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:12px;}
-    .group-label-TRUE{background:var(--true-dim);color:#ff3366;border:1px solid rgba(228,0,75,.25);}
-    .group-label-TOT {background:var(--tot-dim); color:#4da6ff;border:1px solid rgba(0,102,204,.25);}
-    .group-label-AIS {background:var(--ais-dim); color:var(--ais-gold);border:1px solid rgba(244,196,48,.25);}
-    .group-label-3BB {background:var(--bb3-dim); color:#ff884d;border:1px solid rgba(255,102,0,.25);}
-    .group-label-DTAC{background:var(--dtac-dim);color:var(--dtac);border:1px solid rgba(225,29,72,.25);}
-    .group-label-NT  {background:var(--nt-dim);  color:var(--nt); border:1px solid rgba(14,165,233,.25);}
+    .group-label{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:7px;font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;}
+    .g-row-cnt{font-size:.74rem;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);padding:2px 8px;border-radius:12px;white-space:nowrap;}
+    .group-label-TRUE{background:var(--true-dim); color:#ff3366;        border:1px solid rgba(228,0,75,.25);}
+    .group-label-TOT {background:var(--tot-dim);  color:#4da6ff;        border:1px solid rgba(0,102,204,.25);}
+    .group-label-AIS {background:var(--ais-dim);  color:var(--ais);     border:1px solid rgba(0,132,61,.25);}
+    .group-label-3BB {background:var(--bb3-dim);  color:#ff884d;        border:1px solid rgba(255,102,0,.25);}
+    .group-label-DTAC{background:var(--dtac-dim); color:var(--dtac);    border:1px solid rgba(225,29,72,.25);}
+    .group-label-NT  {background:var(--nt-dim);   color:var(--nt);      border:1px solid rgba(245,168,0,.25);}
     .group-company{font-size:.8rem;color:var(--text-muted);}
     .group-divider{flex:1;height:1px;background:var(--border);}
 
-    .table-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);}
-    table{width:100%;border-collapse:collapse;font-size:.88rem;}
+    /* ── TABLE ── */
+    .table-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);overflow-x:auto;}
+    table{width:100%;border-collapse:collapse;font-size:.88rem;table-layout:fixed;}
     thead tr{background:var(--surface2);}
-    th{padding:10px 14px;text-align:left;font-size:.72rem;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--border);}
-    td{padding:10px 14px;border-bottom:1px solid rgba(48,54,61,.5);vertical-align:middle;}
+    th{padding:10px 14px;text-align:left;font-size:.72rem;font-weight:700;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    td{padding:10px 14px;border-bottom:1px solid rgba(48,54,61,.5);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;}
     tbody tr{background:var(--surface);transition:background .15s;}
     tbody tr:last-child td{border-bottom:none;}
     tbody tr:hover{background:var(--surface2);}
     tr.r-hidden{display:none;}
 
-    .td-no{color:var(--text-muted);font-size:.8rem;width:40px;text-align:center;}
-    .branch-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:.78rem;font-weight:600;font-family:'Courier New',monospace;color:var(--branch-color);}
-    .company-name{font-weight:500;}
-    .phone-num{font-family:'Courier New',monospace;font-size:.85rem;color:var(--phone-color);}
-    .customer-id{font-family:'Courier New',monospace;font-size:.78rem;color:var(--text-muted);}
-    .price-val{font-family:'Courier New',monospace;font-size:.82rem;color:#a3e635;}
-    .note-cell{font-size:.78rem;max-width:160px;}
-    .note-tag{display:inline-block;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);color:#fbbf24;border-radius:5px;padding:2px 7px;font-size:.74rem;font-weight:600;}
+    /* Internet table column widths */
+    table.t-internet col.c-no    {width:46px;}
+    table.t-internet col.c-branch{width:140px;}
+    table.t-internet col.c-co    {width:200px;}
+    table.t-internet col.c-phone {width:140px;}
+    table.t-internet col.c-cid   {width:130px;}
+    table.t-internet col.c-price {width:90px;}
+    table.t-internet col.c-status{width:120px;}
+    table.t-internet col.c-note  {width:160px;}
+
+    /* Phone table column widths */
+    table.t-phone col.c-no    {width:46px;}
+    table.t-phone col.c-branch{width:140px;}
+    table.t-phone col.c-co    {width:200px;}
+    table.t-phone col.c-phone {width:140px;}
+    table.t-phone col.c-cid   {width:130px;}
+    table.t-phone col.c-price {width:90px;}
+    table.t-phone col.c-status{width:120px;}
+    table.t-phone col.c-note  {width:160px;}
+
+    .td-no{color:var(--text-muted);font-size:.8rem;text-align:center;}
+    .branch-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:5px;padding:2px 8px;font-size:.78rem;font-weight:600;font-family:'Courier New',monospace;color:var(--branch-color);white-space:nowrap;}
+    .company-name{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .phone-num{font-family:'Courier New',monospace;font-size:.85rem;color:var(--phone-color);white-space:nowrap;}
+    .customer-id{font-family:'Courier New',monospace;font-size:.78rem;color:var(--text-muted);white-space:nowrap;}
+    .price-val{font-family:'Courier New',monospace;font-size:.82rem;color:var(--price-color);white-space:nowrap;}
+    .note-cell{font-size:.78rem;}
+    .note-tag{display:inline-block;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.3);color:#fbbf24;border-radius:5px;padding:2px 7px;font-size:.74rem;font-weight:600;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
     .note-empty{color:var(--inactive);}
 
     .status-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.75rem;font-weight:600;white-space:nowrap;}
-    .status-badge::before{content:'';width:5px;height:5px;border-radius:50%;}
-    .badge-active{background:var(--active-bg);color:var(--active);}
+    .status-badge::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+    .badge-active  {background:var(--active-bg);   color:var(--active);}
     .badge-active::before{background:var(--active);box-shadow:0 0 4px var(--active);}
-    .badge-cancel{background:var(--cancel-bg);color:var(--cancel);}
+    .badge-cancel  {background:var(--cancel-bg);   color:var(--cancel);}
     .badge-cancel::before{background:var(--cancel);}
-    .badge-inactive{background:var(--inactive-bg);color:var(--inactive);}
+    .badge-inactive{background:var(--inactive-bg); color:var(--inactive);}
     .badge-inactive::before{background:var(--inactive);}
 
     mark{background:var(--highlight-bg);color:inherit;border-radius:3px;padding:0 1px;}
-
     .no-result{text-align:center;padding:48px 20px;color:var(--text-muted);}
     .no-result-icon{font-size:2.5rem;display:block;margin-bottom:10px;opacity:.6;}
-
     .last-updated{font-size:.75rem;color:var(--text-muted);display:flex;align-items:center;gap:5px;margin-bottom:18px;}
     .last-updated span{color:var(--stat-num);}
 
     footer{text-align:center;padding:20px;color:var(--text-muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:12px;}
 
-    @media(max-width:768px){
+    @media(max-width:900px){
       header,.tabs-wrapper,main{padding-left:14px;padding-right:14px;}
       .filter-bar{padding:10px 14px;top:115px;}
-      .header-stats{display:none;}
+      .header-stats .price-stat{display:none;}
+      .stat-divider{display:none;}
       .banner-pills{display:none;}
-      th,td{padding:8px 8px;font-size:.8rem;}
       .refresh-btn .refresh-label{display:none;}
       .page-btn .page-label{display:none;}
       .f-divider,.f-label{display:none;}
       .company-sel{max-width:130px;}
+      table{font-size:.8rem;}
+      th,td{padding:8px 10px;}
+    }
+    @media(max-width:600px){
+      .header-stats{display:none;}
+      .price-summary-grid{grid-template-columns:1fr 1fr;}
     }
   </style>
 </head>
@@ -250,11 +299,17 @@
     <button class="page-btn" data-page="phone" onclick="switchPage('phone')">
       <span>📱</span><span class="page-label">เบอร์โทรศัพท์</span>
     </button>
+    <button class="page-btn" data-page="cancel" onclick="switchPage('cancel')">
+      <span>🚫</span><span class="page-label">ยกเลิก</span>
+    </button>
   </div>
 
   <div class="header-stats">
     <div class="stat-item"><span class="num" id="total-count">–</span><span class="lbl">เบอร์ทั้งหมด</span></div>
     <div class="stat-item"><span class="num" id="active-count">–</span><span class="lbl">ใช้งานอยู่</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat-item price-stat"><span class="num" id="cost-page">–</span><span class="lbl">💰 ค่าใช้จ่าย (หน้านี้)</span></div>
+    <div class="stat-item price-stat"><span class="num" id="cost-total">–</span><span class="lbl">💰 รวมทั้งหมด</span></div>
   </div>
   <button class="refresh-btn" id="refresh-btn" onclick="refreshCurrentPage()">
     <span class="spin-icon">↻</span><span class="refresh-label"> รีเฟรช</span>
@@ -268,13 +323,16 @@
 
 <!-- ═══════ TABS ═══════ -->
 <div class="tabs-wrapper">
+  <div class="cancel-sub-row" id="cancel-sub-row">
+    <span class="cancel-sub-label">ประเภท</span>
+    <button class="cancel-sub-btn active" id="csub-internet" onclick="switchCancelSub('internet')">📡 อินเทอร์เน็ต</button>
+    <button class="cancel-sub-btn" id="csub-phone" onclick="switchCancelSub('phone')">📱 โทรศัพท์</button>
+  </div>
   <div class="tabs" id="tabs-container"></div>
 </div>
 
 <!-- ═══════ FILTER BAR ═══════ -->
 <div class="filter-bar hidden" id="filter-bar">
-
-  <!-- 🔍 Search -->
   <div class="search-wrap">
     <span class="search-icon-lbl">🔍</span>
     <input class="search-input" id="search-input" type="text"
@@ -282,36 +340,24 @@
       oninput="onSearchInput(this.value)"/>
     <button class="search-clear" id="search-clear" onclick="clearSearch()" title="ล้าง">✕</button>
   </div>
-
   <div class="f-divider"></div>
-
-  <!-- 🎯 Status -->
   <div class="filter-group">
     <span class="f-label">สถานะ</span>
     <button class="sf-btn active" data-status="all"    onclick="setStatus('all')">ทั้งหมด</button>
     <button class="sf-btn"        data-status="active" onclick="setStatus('active')">✓ ใช้งาน</button>
-    <button class="sf-btn"        data-status="cancel" onclick="setStatus('cancel')">✕ ยกเลิก/ระงับ</button>
     <button class="sf-btn"        data-status="other"  onclick="setStatus('other')">○ อื่นๆ</button>
   </div>
-
   <div class="f-divider"></div>
-
-  <!-- 🏢 Company -->
   <div class="filter-group">
     <span class="f-label">บริษัท</span>
     <select class="company-sel" id="company-sel" onchange="setCompany(this.value)">
       <option value="all">— ทุกบริษัท —</option>
     </select>
   </div>
-
   <div class="f-divider"></div>
-
-  <!-- 📝 Has note -->
   <button class="note-toggle" id="note-toggle" onclick="toggleNote()">
     <span class="nt-dot"></span>มีหมายเหตุ
   </button>
-
-  <!-- Result + Reset -->
   <span class="f-result" id="f-result"></span>
   <button class="reset-btn" id="reset-btn" onclick="resetFilters()">↺ ล้างตัวกรอง</button>
 </div>
@@ -324,20 +370,19 @@
   <div class="page-section" id="page-phone">
     <div class="loading-wrap"><div class="loader" style="border-top-color:#a78bfa;"></div><p>รอโหลดข้อมูลเบอร์โทรศัพท์…</p></div>
   </div>
+  <div class="page-section" id="page-cancel">
+    <div class="loading-wrap"><p style="color:var(--text-muted)">โหลดหน้าหลักก่อน แล้วค่อยดูข้อมูลที่นี่</p></div>
+  </div>
 </main>
 
-<footer>SFC Group · ระบบข้อมูลเบอร์ · โหลดจาก SharePoint ผ่าน Power Automate อัตโนมัติ</footer>
+<footer>SEE FAH GROUP · ระบบข้อมูลเบอร์ · IT & POS DEPARTMENT</footer>
 
 <script>
-// ──────────────────────────────────────────────
-// API URLs — แก้ตรงนี้
-// ──────────────────────────────────────────────
+// ── API URLs ──
 const INTERNET_API_URL = 'https://defaultf7533d4f423a4a0e9c12b86f37e739.7a.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/d83161bb4d3e42ea86f4e68003b897ba/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=jd-4q0k4_9101MW3Dua47qA5uXVEu-jNL5--UobUU_I';
 const PHONE_API_URL    = 'https://defaultf7533d4f423a4a0e9c12b86f37e739.7a.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/8da4993df5a543659abdfbd7da60fb0b/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VXQdk4l1Bi1Tz6gDRloypL4gGiWCT8by3lM1qEiJGxE';
 
-// ──────────────────────────────────────────────
-// META
-// ──────────────────────────────────────────────
+// ── CARRIER META ──
 const CARRIER_I = {
   TRUE: { label:'TRUE Corporation',           bc:'banner-TRUE',lc:'logo-TRUE',gc:'group-label-TRUE' },
   TOT:  { label:'TOT (NT)',                    bc:'banner-TOT', lc:'logo-TOT', gc:'group-label-TOT'  },
@@ -355,22 +400,32 @@ const GRP_EMOJI = {
   'SEE FAH LUMPINI':'🏢','SEE FAH FRANCHISE':'🏪','OSAKA OSHO':'🍜','BAKE BROS':'🥐',
 };
 
-// ──────────────────────────────────────────────
-// STATE
-// ──────────────────────────────────────────────
+// ── STATE ──
 let curPage    = 'internet';
 let curCarrier = null;
+let curCancelSub = 'internet';
 const loaded   = { internet:false, phone:false };
-const store    = { internet:{}, phone:{} };
+const store    = { internet:{}, phone:{}, cancel:{ internet:{}, phone:{} } };
 const F        = { search:'', status:'all', company:'all', note:false };
+// cost totals: { carrier -> sum }
+const costs    = { internet:{}, phone:{} };
 
-// ──────────────────────────────────────────────
-// THEME
-// ──────────────────────────────────────────────
+// ── HELPERS ──
+function parsePrice(v){ const n=parseFloat(String(v||'').replace(/,/g,'')); return isNaN(n)?0:n; }
+function fmtPrice(n){ return n>0?'฿'+n.toLocaleString('th-TH',{minimumFractionDigits:0}):'–'; }
+function pageCost(p){ return Object.values(costs[p]).reduce((s,v)=>s+v,0); }
+function grandTotal(){ return pageCost('internet')+pageCost('phone'); }
+function updateCostDisplay(){
+  document.getElementById('cost-page').textContent  = fmtPrice(pageCost(curPage));
+  const gt = grandTotal();
+  document.getElementById('cost-total').textContent = gt>0 ? fmtPrice(gt) : '–';
+}
+
+// ── THEME ──
 function toggleTheme(){
-  const l = document.documentElement.classList.toggle('light');
-  document.getElementById('theme-icon').textContent  = l?'☀️':'🌙';
-  document.getElementById('theme-label').textContent = l?'Light':'Dark';
+  const l=document.documentElement.classList.toggle('light');
+  document.getElementById('theme-icon').textContent =l?'☀️':'🌙';
+  document.getElementById('theme-label').textContent=l?'Light':'Dark';
   localStorage.setItem('theme',l?'light':'dark');
 }
 if(localStorage.getItem('theme')==='light'){
@@ -379,28 +434,37 @@ if(localStorage.getItem('theme')==='light'){
   document.getElementById('theme-label').textContent='Light';
 }
 
-// ──────────────────────────────────────────────
-// PAGE SWITCH
-// ──────────────────────────────────────────────
+// ── PAGE SWITCH ──
 function switchPage(p){
   if(curPage===p)return;
   curPage=p;
   resetFilters(true);
   document.querySelectorAll('.page-btn').forEach(b=>b.classList.toggle('active-page',b.dataset.page===p));
   document.querySelectorAll('.page-section').forEach(s=>s.classList.toggle('active-section',s.id==='page-'+p));
-  document.getElementById('header-title').textContent = p==='internet'?'ข้อมูลเบอร์อินเทอร์เน็ต':'ข้อมูลเบอร์โทรศัพท์';
-  rebuildTabs(p);
-  updateStats(p);
-  if(p==='phone'&&!loaded.phone) loadPhone();
+  const cancelSubRow=document.getElementById('cancel-sub-row');
+  if(p==='cancel'){
+    document.getElementById('header-title').textContent='เบอร์ที่ยกเลิก/ระงับ';
+    cancelSubRow.classList.add('vis');
+    rebuildCancelTabs(curCancelSub);
+    renderCancelPanels(curCancelSub);
+    updateCancelStats(curCancelSub);
+  } else {
+    cancelSubRow.classList.remove('vis');
+    document.getElementById('header-title').textContent=p==='internet'?'ข้อมูลเบอร์อินเทอร์เน็ต':'ข้อมูลเบอร์โทรศัพท์';
+    rebuildTabs(p);
+    updateStats(p);
+    updateCostDisplay();
+    if(p==='phone'&&!loaded.phone) loadPhone();
+  }
 }
 
 function rebuildTabs(p){
-  const tc = document.getElementById('tabs-container');
+  const tc=document.getElementById('tabs-container');
   tc.innerHTML='';
-  const s = store[p];
+  const s=store[p];
   Object.keys(s).forEach((c,i)=>{
-    const cnt = s[c].reduce((a,g)=>a+g.rows.length,0);
-    const b = document.createElement('button');
+    const cnt=s[c].reduce((a,g)=>a+g.rows.length,0);
+    const b=document.createElement('button');
     b.className='tab-btn'+(i===0?' active-tab':'');
     b.dataset.carrier=c;
     b.onclick=()=>switchTab(c);
@@ -410,8 +474,94 @@ function rebuildTabs(p){
   });
   if(Object.keys(s).length){
     document.getElementById('filter-bar').classList.remove('hidden');
-    fillCompany(p, curCarrier);
+    fillCompany(p,curCarrier);
   }
+}
+
+function rebuildCancelTabs(sub){
+  const tc=document.getElementById('tabs-container');
+  tc.innerHTML='';
+  document.getElementById('filter-bar').classList.add('hidden');
+  const s=store.cancel[sub];
+  let first=null;
+  Object.keys(s).forEach((c,i)=>{
+    const cnt=s[c].reduce((a,g)=>a+g.rows.length,0);
+    if(!cnt)return;
+    const b=document.createElement('button');
+    b.className='tab-btn'+(first===null?' active-tab':'');
+    b.dataset.carrier=c;
+    b.onclick=()=>switchCancelTab(c);
+    b.innerHTML=`<span class="carrier-dot dot-${c}"></span>${c}<span class="tab-count">${cnt}</span>`;
+    tc.appendChild(b);
+    if(first===null){first=c;curCarrier=c;}
+  });
+}
+
+function renderCancelPanels(sub){
+  const pe=document.getElementById('page-cancel');
+  pe.innerHTML='';
+  const s=store.cancel[sub];
+  const CARRIER_MAP=sub==='internet'?CARRIER_I:CARRIER_P;
+  let firstPanel=true;
+  Object.entries(s).forEach(([carrier,groups])=>{
+    const totalRows=groups.reduce((a,g)=>a+g.rows.length,0);
+    if(!totalRows)return;
+    const m=CARRIER_MAP[carrier]||{label:carrier,bc:'banner-TRUE',lc:'logo-TRUE',gc:'group-label-TRUE'};
+    let gHtml='';
+    groups.forEach(g=>{
+      if(!g.rows.length)return;
+      const em=sub==='internet'?(GRP_EMOJI[g.name]||'📁'):'🏢';
+      gHtml+=`<div class="group-section">
+        <div class="group-header">
+          <span class="group-label ${m.gc}">${em} ${g.name}</span>
+          <span class="g-row-cnt">${g.rows.length} รายการ</span>
+          <div class="group-divider"></div>
+        </div>
+        <div class="table-wrap">
+          ${tblHead(sub==='phone')}
+          <tbody>${g.rows.map(r=>sub==='phone'?rowPRow(r,''):rowIRow(r,'')).join('')}</tbody>
+          </table>
+        </div>
+      </div>`;
+    });
+    const panel=document.createElement('div');
+    panel.className='panel'+(firstPanel?' active':'');
+    panel.id=`panel-cancel-${carrier}`;
+    panel.dataset.carrier=carrier;
+    panel.innerHTML=`
+      <div class="carrier-banner ${m.bc}">
+        <div class="carrier-logo ${m.lc}">${carrier}</div>
+        <div class="banner-info"><h2>${m.label}</h2><p>เบอร์ที่ยกเลิก/ระงับ – ${sub==='internet'?'อินเทอร์เน็ต':'โทรศัพท์'}</p></div>
+        <div class="banner-pills"><span class="pill pill-cancel">🚫 ยกเลิก/ระงับ (${totalRows})</span></div>
+      </div>
+      ${gHtml}`;
+    pe.appendChild(panel);
+    firstPanel=false;
+  });
+  if(firstPanel) pe.innerHTML='<div class="no-result" style="padding:60px 20px"><span class="no-result-icon">✅</span>ไม่มีเบอร์ที่ยกเลิกในหมวดนี้</div>';
+}
+
+function switchCancelSub(sub){
+  curCancelSub=sub;
+  document.querySelectorAll('.cancel-sub-btn').forEach(b=>b.classList.toggle('active',b.id===`csub-${sub}`));
+  rebuildCancelTabs(sub);
+  renderCancelPanels(sub);
+  updateCancelStats(sub);
+}
+
+function switchCancelTab(c){
+  curCarrier=c;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active-tab',b.dataset.carrier===c));
+  const pe=document.getElementById('page-cancel');
+  pe.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===`panel-cancel-${c}`));
+}
+
+function updateCancelStats(sub){
+  let t=0;
+  Object.values(store.cancel[sub]).forEach(gs=>gs.forEach(g=>{t+=g.rows.length;}));
+  document.getElementById('total-count').textContent=t||'–';
+  document.getElementById('active-count').textContent='–';
+  document.getElementById('cost-page').textContent='–';
 }
 
 function updateStats(p){
@@ -420,13 +570,11 @@ function updateStats(p){
     t+=g.rows.length;
     a+=g.rows.filter(r=>r.status.includes('ใช้งานอยู่')).length;
   }));
-  document.getElementById('total-count').textContent = t||'–';
-  document.getElementById('active-count').textContent= a||'–';
+  document.getElementById('total-count').textContent =t||'–';
+  document.getElementById('active-count').textContent=a||'–';
 }
 
-// ──────────────────────────────────────────────
-// TAB SWITCH
-// ──────────────────────────────────────────────
+// ── TAB SWITCH ──
 function switchTab(c){
   curCarrier=c;
   resetFilters(true);
@@ -436,9 +584,7 @@ function switchTab(c){
   fillCompany(curPage,c);
 }
 
-// ──────────────────────────────────────────────
-// UTILS
-// ──────────────────────────────────────────────
+// ── UTILS ──
 function sBadge(v){
   const s=String(v||'').trim();
   if(!s||s==='null')return`<span class="status-badge badge-inactive">–</span>`;
@@ -448,34 +594,33 @@ function sBadge(v){
   if(s.includes('ไม่ได้'))   return`<span class="status-badge badge-inactive">ไม่ได้ใช้งาน</span>`;
   return`<span class="status-badge badge-inactive">${s}</span>`;
 }
-
 function hl(txt,q){
   if(!q||!txt)return String(txt||'');
-  return String(txt).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'), '<mark>$1</mark>');
+  return String(txt).replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,'gi'),'<mark>$1</mark>');
 }
-
 function noteHTML(n,q){
   if(!n||n===''||n==='-')return`<span class="note-empty">–</span>`;
-  return`<span class="note-tag">${q?hl(n,q):n}</span>`;
+  return`<span class="note-tag" title="${n}">${q?hl(n,q):n}</span>`;
 }
 
+// ── ROW BUILDERS ──
 function rowIRow(r,q){
   return`<tr>
     <td class="td-no">${r.no}</td>
     <td><span class="branch-tag">${hl(r.branch||'–',q)}</span></td>
-    <td class="company-name">${hl(r.company||'–',q)}</td>
+    <td class="company-name" title="${r.company||''}">${hl(r.company||'–',q)}</td>
     <td class="phone-num">${hl(r.phone||'–',q)}</td>
     <td class="customer-id">${r.custId||'–'}</td>
+    <td class="price-val">${r.price?'฿'+r.price:'–'}</td>
     <td>${sBadge(r.status)}</td>
     <td class="note-cell">${noteHTML(r.note,q)}</td>
   </tr>`;
 }
-
 function rowPRow(r,q){
   return`<tr>
     <td class="td-no">${r.no||'–'}</td>
     <td><span class="branch-tag">${hl(r.branch||'–',q)}</span></td>
-    <td class="company-name">${hl(r.company||'–',q)}</td>
+    <td class="company-name" title="${r.company||''}">${hl(r.company||'–',q)}</td>
     <td class="phone-num">${hl(r.phone||'–',q)}</td>
     <td class="customer-id">${r.custId||'–'}</td>
     <td class="price-val">${r.price?'฿'+r.price:'–'}</td>
@@ -484,11 +629,25 @@ function rowPRow(r,q){
   </tr>`;
 }
 
-// ──────────────────────────────────────────────
-// FILTER LOGIC
-// ──────────────────────────────────────────────
+// ── TABLE TEMPLATE ──
+function tblHead(isPhone){
+  const cls=isPhone?'t-phone':'t-internet';
+  return`<table class="${cls}">
+    <colgroup>
+      <col class="c-no"><col class="c-branch"><col class="c-co">
+      <col class="c-phone"><col class="c-cid"><col class="c-price">
+      <col class="c-status"><col class="c-note">
+    </colgroup>
+    <thead><tr>
+      <th>NO.</th><th>สาขา</th><th>Company</th>
+      <th>หมายเลข</th><th>รหัสลูกค้า</th><th>ราคา</th>
+      <th>สถานะ</th><th>หมายเหตุ</th>
+    </tr></thead>`;
+}
+
+// ── FILTER LOGIC ──
 function matches(r){
-  const {search:q, status, company, note:hasNote} = F;
+  const{search:q,status,company,note:hasNote}=F;
   if(status==='active'&&!r.status.includes('ใช้งานอยู่'))return false;
   if(status==='cancel'&&!r.status.includes('ยกเลิก')&&!r.status.includes('ระงับ'))return false;
   if(status==='other'&&(r.status.includes('ใช้งานอยู่')||r.status.includes('ยกเลิก')||r.status.includes('ระงับ')))return false;
@@ -500,20 +659,16 @@ function matches(r){
   }
   return true;
 }
-
 function applyFilters(){
   if(!curCarrier)return;
-  const groups = store[curPage][curCarrier];
+  const groups=store[curPage][curCarrier];
   if(!groups)return;
-  const panel = document.getElementById(`panel-${curPage}-${curCarrier}`);
+  const panel=document.getElementById(`panel-${curPage}-${curCarrier}`);
   if(!panel)return;
-
-  const q = F.search;
-  const isP = curPage==='phone';
+  const q=F.search;
   let vis=0;
-
   panel.querySelectorAll('.group-section').forEach((sec,gi)=>{
-    const g = groups[gi];
+    const g=groups[gi];
     if(!g){sec.classList.add('g-hidden');return;}
     let gVis=0;
     sec.querySelectorAll('tbody tr').forEach((tr,ri)=>{
@@ -523,127 +678,96 @@ function applyFilters(){
       tr.classList.toggle('r-hidden',!ok);
       if(ok){
         gVis++;
-        // update cells that need highlight/plain
         const bTag=tr.querySelector('.branch-tag');
-        if(bTag) bTag.innerHTML=hl(r.branch||'–',q);
+        if(bTag)bTag.innerHTML=hl(r.branch||'–',q);
         const cTd=tr.querySelector('.company-name');
-        if(cTd) cTd.innerHTML=hl(r.company||'–',q);
+        if(cTd)cTd.innerHTML=hl(r.company||'–',q);
         const pTd=tr.querySelector('.phone-num');
-        if(pTd) pTd.innerHTML=hl(r.phone||'–',q);
+        if(pTd)pTd.innerHTML=hl(r.phone||'–',q);
         const nTd=tr.querySelector('.note-cell');
-        if(nTd) nTd.innerHTML=noteHTML(r.note,q);
+        if(nTd)nTd.innerHTML=noteHTML(r.note,q);
       }
     });
     sec.classList.toggle('g-hidden',gVis===0);
     const badge=sec.querySelector('.g-row-cnt');
-    if(badge) badge.textContent=`${gVis} รายการ`;
+    if(badge)badge.textContent=`${gVis} รายการ`;
     vis+=gVis;
   });
-
-  // no-result
   let nr=panel.querySelector('.no-result');
   if(vis===0){
     if(!nr){nr=document.createElement('div');nr.className='no-result';panel.appendChild(nr);}
     nr.innerHTML='<span class="no-result-icon">🔍</span>ไม่พบข้อมูลที่ตรงกับตัวกรองที่เลือก';
   }else if(nr)nr.remove();
-
-  // tab count badge
   const total=groups.reduce((s,g)=>s+g.rows.length,0);
   const tc=document.getElementById(`tc-${curCarrier}`);
-  if(tc) tc.textContent=vis<total?`${vis}/${total}`:total;
-
-  // result label
+  if(tc)tc.textContent=vis<total?`${vis}/${total}`:total;
   const active=F.search||F.status!=='all'||F.company!=='all'||F.note;
-  const re=document.getElementById('f-result');
-  re.innerHTML=active?`แสดง <span class="cnt">${vis}</span> จาก <span class="cnt">${total}</span> รายการ`:'';
+  document.getElementById('f-result').innerHTML=active?`แสดง <span class="cnt">${vis}</span> จาก <span class="cnt">${total}</span> รายการ`:'';
   document.getElementById('reset-btn').classList.toggle('vis',!!active);
 }
 
-// ──────────────────────────────────────────────
-// FILTER CONTROLS
-// ──────────────────────────────────────────────
+// ── FILTER CONTROLS ──
 let searchTimer;
-function onSearchInput(v){
-  F.search=v.trim();
-  document.getElementById('search-clear').classList.toggle('vis',v.length>0);
-  clearTimeout(searchTimer);
-  searchTimer=setTimeout(applyFilters,160);
-}
-function clearSearch(){
-  document.getElementById('search-input').value='';
-  document.getElementById('search-clear').classList.remove('vis');
-  F.search=''; applyFilters();
-}
-function setStatus(s){
-  F.status=s;
-  document.querySelectorAll('.sf-btn').forEach(b=>b.classList.toggle('active',b.dataset.status===s));
-  applyFilters();
-}
+function onSearchInput(v){ F.search=v.trim(); document.getElementById('search-clear').classList.toggle('vis',v.length>0); clearTimeout(searchTimer); searchTimer=setTimeout(applyFilters,160); }
+function clearSearch(){ document.getElementById('search-input').value=''; document.getElementById('search-clear').classList.remove('vis'); F.search=''; applyFilters(); }
+function setStatus(s){ F.status=s; document.querySelectorAll('.sf-btn').forEach(b=>b.classList.toggle('active',b.dataset.status===s)); applyFilters(); }
 function setCompany(c){ F.company=c; applyFilters(); }
-function toggleNote(){
-  F.note=!F.note;
-  document.getElementById('note-toggle').classList.toggle('active',F.note);
-  applyFilters();
-}
+function toggleNote(){ F.note=!F.note; document.getElementById('note-toggle').classList.toggle('active',F.note); applyFilters(); }
 function fillCompany(p,c){
   const gs=store[p][c]||[];
   const cos=[...new Set(gs.flatMap(g=>g.rows.map(r=>r.company)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'th'));
   const sel=document.getElementById('company-sel');
   const prev=sel.value;
   sel.innerHTML='<option value="all">— ทุกบริษัท —</option>';
-  cos.forEach(co=>{
-    const o=document.createElement('option');
-    o.value=o.textContent=co;
-    sel.appendChild(o);
-  });
+  cos.forEach(co=>{ const o=document.createElement('option'); o.value=o.textContent=co; sel.appendChild(o); });
   sel.value=cos.includes(prev)?prev:'all';
   F.company=sel.value;
 }
 function resetFilters(silent=false){
   F.search=''; F.status='all'; F.company='all'; F.note=false;
-  const si=document.getElementById('search-input');
-  if(si) si.value='';
+  const si=document.getElementById('search-input'); if(si)si.value='';
   document.getElementById('search-clear').classList.remove('vis');
   document.querySelectorAll('.sf-btn').forEach(b=>b.classList.toggle('active',b.dataset.status==='all'));
-  const sel=document.getElementById('company-sel');
-  if(sel) sel.value='all';
+  const sel=document.getElementById('company-sel'); if(sel)sel.value='all';
   document.getElementById('note-toggle').classList.remove('active');
   document.getElementById('f-result').textContent='';
   document.getElementById('reset-btn').classList.remove('vis');
-  if(!silent) applyFilters();
+  if(!silent)applyFilters();
 }
 
-// ──────────────────────────────────────────────
-// PARSE INTERNET SHEET
-// ──────────────────────────────────────────────
+
+// ── PARSE INTERNET SHEET ──
 function parseIntSheet(ws){
   const raw=XLSX.utils.sheet_to_json(ws,{header:1,defval:null});
   let hi=raw.findIndex(r=>String(r[0]||'').trim()==='NO.'); if(hi<0)hi=3;
   const groups=[]; let tmp=[];
   for(let i=hi+1;i<raw.length;i++){
     const row=raw[i];
-    if(!row||row.every(c=>c==null||c==='')){continue;}
+    if(!row||row.every(c=>c==null||c===''))continue;
     const c0=String(row[0]||'').trim();
     const isNum=!isNaN(parseFloat(c0))&&c0!=='';
     const isFooter=!isNum&&c0!==''&&c0.toUpperCase()!=='NO.'&&
       (row[1]==null||String(row[1]||'').trim()==='')&&
       (row[2]==null||String(row[2]||'').trim()==='');
     if(isNum){
-      tmp.push({no:c0,branch:String(row[1]||'').trim(),company:String(row[2]||'').trim(),
-        phone:String(row[3]||'').trim(),custId:String(row[4]||'').trim(),
-        status:String(row[6]||'').trim(),note:String(row[7]||'').trim()});
+      tmp.push({no:c0,
+        branch: String(row[1]||'').trim(),
+        company:String(row[2]||'').trim(),
+        phone:  String(row[3]||'').trim(),
+        custId: String(row[4]||'').trim(),
+        price:  String(row[5]||'').trim(),
+        status: String(row[6]||'').trim(),
+        note:   String(row[7]||'').trim()});
     } else if(isFooter){
       if(tmp.length){groups.push({name:c0,rows:[...tmp]});tmp=[];}
       else groups.push({name:c0,rows:[]});
     }
   }
-  if(tmp.length) groups.push({name:'OTHER / ไม่ระบุกลุ่ม',rows:[...tmp]});
+  if(tmp.length)groups.push({name:'OTHER / ไม่ระบุกลุ่ม',rows:[...tmp]});
   return groups;
 }
 
-// ──────────────────────────────────────────────
-// PARSE PHONE SHEET
-// ──────────────────────────────────────────────
+// ── PARSE PHONE SHEET ──
 function parsePhSheet(ws){
   const raw=XLSX.utils.sheet_to_json(ws,{header:1,defval:null});
   let hi=raw.findIndex(r=>String(r[0]||'').trim()==='NO.');if(hi<0)hi=0;
@@ -659,35 +783,48 @@ function parsePhSheet(ws){
     const ph=C.ph>=0?String(row[C.ph]||'').trim():'';
     if(!c0&&!ph)continue;
     if(!c0.match(/^\d/)&&!ph)continue;
-    rows.push({no:c0,branch:C.br>=0?String(row[C.br]||'').trim():'',
-      company:C.co>=0?String(row[C.co]||'').trim():'',phone:ph,
-      custId:C.ci>=0?String(row[C.ci]||'').trim():'',
-      price:C.pr>=0?String(row[C.pr]||'').trim():'',
-      status:C.st>=0?String(row[C.st]||'').trim():'',
-      note:C.nt>=0?String(row[C.nt]||'').trim():''});
+    rows.push({no:c0,
+      branch: C.br>=0?String(row[C.br]||'').trim():'',
+      company:C.co>=0?String(row[C.co]||'').trim():'',
+      phone:  ph,
+      custId: C.ci>=0?String(row[C.ci]||'').trim():'',
+      price:  C.pr>=0?String(row[C.pr]||'').trim():'',
+      status: C.st>=0?String(row[C.st]||'').trim():'',
+      note:   C.nt>=0?String(row[C.nt]||'').trim():''});
   }
   const mp=new Map();
   rows.forEach(r=>{const k=r.company||'ไม่ระบุบริษัท';if(!mp.has(k))mp.set(k,[]);mp.get(k).push(r);});
   return [...mp.entries()].map(([name,rows])=>({name,rows}));
 }
 
-// ──────────────────────────────────────────────
-// RENDER INTERNET
-// ──────────────────────────────────────────────
+// ── RENDER INTERNET ──
 function renderInternet(wb){
   const pe=document.getElementById('page-internet');
   const tc=document.getElementById('tabs-container');
   pe.innerHTML=tc.innerHTML='';
-  store.internet={};
+  store.internet={}; costs.internet={};
+  store.cancel.internet={};
   let tRows=0,tActive=0;
 
   wb.SheetNames.forEach((carrier,idx)=>{
     const m=CARRIER_I[carrier]||{label:carrier,bc:'banner-TRUE',lc:'logo-TRUE',gc:'group-label-TRUE'};
-    const groups=parseIntSheet(wb.Sheets[carrier]);
+    const allGroups=parseIntSheet(wb.Sheets[carrier]);
+
+    // ── Split cancelled vs active ──
+    const groups=[];
+    store.cancel.internet[carrier]=[];
+    allGroups.forEach(g=>{
+      const activeRows=g.rows.filter(r=>!r.status.includes('ยกเลิก')&&!r.status.includes('ระงับ'));
+      const cancelRows=g.rows.filter(r=>r.status.includes('ยกเลิก')||r.status.includes('ระงับ'));
+      if(activeRows.length) groups.push({name:g.name,rows:activeRows});
+      if(cancelRows.length) store.cancel.internet[carrier].push({name:g.name,rows:cancelRows});
+    });
     store.internet[carrier]=groups;
+
     const rCnt=groups.reduce((s,g)=>s+g.rows.length,0);
     const aCnt=groups.reduce((s,g)=>s+g.rows.filter(r=>r.status.includes('ใช้งานอยู่')).length,0);
-    const cCnt=groups.reduce((s,g)=>s+g.rows.filter(r=>r.status.includes('ยกเลิก')).length,0);
+    const pSum=groups.reduce((s,g)=>s+g.rows.reduce((ss,r)=>ss+parsePrice(r.price),0),0);
+    costs.internet[carrier]=pSum;
     tRows+=rCnt; tActive+=aCnt;
 
     const btn=document.createElement('button');
@@ -700,8 +837,8 @@ function renderInternet(wb){
 
     const pills=[
       aCnt>0?`<span class="pill pill-active">✓ ใช้งานอยู่ (${aCnt})</span>`:'',
-      cCnt>0?`<span class="pill pill-cancel">✕ ยกเลิกแล้ว (${cCnt})</span>`:'',
-      (rCnt-aCnt-cCnt)>0?`<span class="pill pill-inactive">○ ไม่ได้ใช้งาน (${rCnt-aCnt-cCnt})</span>`:'',
+      (rCnt-aCnt)>0?`<span class="pill pill-inactive">○ ไม่ระบุ (${rCnt-aCnt})</span>`:'',
+      pSum>0?`<span class="pill pill-price">💰 ${fmtPrice(pSum)}</span>`:'',
     ].join('');
 
     let gHtml='';
@@ -709,17 +846,20 @@ function renderInternet(wb){
       if(!g.rows.length)return;
       const em=GRP_EMOJI[g.name]||'📁';
       const cos=[...new Set(g.rows.map(r=>r.company).filter(Boolean))];
+      const gSum=g.rows.reduce((ss,r)=>ss+parsePrice(r.price),0);
       gHtml+=`<div class="group-section">
         <div class="group-header">
           <span class="group-label ${m.gc}">${em} ${g.name}</span>
           ${cos.length===1?`<span class="group-company">${cos[0]}</span>`:''}
           <span class="g-row-cnt">${g.rows.length} รายการ</span>
+          ${gSum>0?`<span class="g-price-total">💰 ${fmtPrice(gSum)}</span>`:''}
           <div class="group-divider"></div>
         </div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>NO.</th><th>สาขา</th><th>Company</th><th>หมายเลข</th><th>รหัสลูกค้า</th><th>สถานะ</th><th>หมายเหตุ</th></tr></thead>
+        <div class="table-wrap">
+          ${tblHead(false)}
           <tbody>${g.rows.map(r=>rowIRow(r,'')).join('')}</tbody>
-        </table></div>
+          </table>
+        </div>
       </div>`;
     });
 
@@ -738,49 +878,64 @@ function renderInternet(wb){
     pe.appendChild(panel);
   });
 
-  document.getElementById('total-count').textContent=tRows;
+  document.getElementById('total-count').textContent =tRows;
   document.getElementById('active-count').textContent=tActive;
   document.getElementById('filter-bar').classList.remove('hidden');
   fillCompany('internet',curCarrier);
+  updateCostDisplay();
 }
 
-// ──────────────────────────────────────────────
-// RENDER PHONE
-// ──────────────────────────────────────────────
+// ── RENDER PHONE ──
 function renderPhone(wb){
   const pe=document.getElementById('page-phone');
-  pe.innerHTML=''; store.phone={};
+  pe.innerHTML=''; store.phone={}; costs.phone={};
+  store.cancel.phone={};
   let tRows=0,tActive=0,first=null;
 
   wb.SheetNames.forEach((carrier,idx)=>{
     const m=CARRIER_P[carrier]||{label:carrier,bc:'banner-TRUE',lc:'logo-TRUE',gc:'group-label-TRUE'};
-    const groups=parsePhSheet(wb.Sheets[carrier]);
+    const allGroups=parsePhSheet(wb.Sheets[carrier]);
+
+    // ── Split cancelled vs active ──
+    const groups=[];
+    store.cancel.phone[carrier]=[];
+    allGroups.forEach(g=>{
+      const activeRows=g.rows.filter(r=>!r.status.includes('ยกเลิก')&&!r.status.includes('ระงับ'));
+      const cancelRows=g.rows.filter(r=>r.status.includes('ยกเลิก')||r.status.includes('ระงับ'));
+      if(activeRows.length) groups.push({name:g.name,rows:activeRows});
+      if(cancelRows.length) store.cancel.phone[carrier].push({name:g.name,rows:cancelRows});
+    });
     store.phone[carrier]=groups;
+
     const rCnt=groups.reduce((s,g)=>s+g.rows.length,0);
     const aCnt=groups.reduce((s,g)=>s+g.rows.filter(r=>r.status.includes('ใช้งานอยู่')).length,0);
-    const cCnt=groups.reduce((s,g)=>s+g.rows.filter(r=>r.status.includes('ยกเลิก')||r.status.includes('ระงับ')).length,0);
+    const pSum=groups.reduce((s,g)=>s+g.rows.reduce((ss,r)=>ss+parsePrice(r.price),0),0);
+    costs.phone[carrier]=pSum;
     tRows+=rCnt; tActive+=aCnt;
     if(!first)first=carrier;
 
     const pills=[
       aCnt>0?`<span class="pill pill-active">✓ ใช้งานอยู่ (${aCnt})</span>`:'',
-      cCnt>0?`<span class="pill pill-cancel">✕ ยกเลิก/ระงับ (${cCnt})</span>`:'',
-      (rCnt-aCnt-cCnt)>0?`<span class="pill pill-inactive">○ ไม่ระบุ (${rCnt-aCnt-cCnt})</span>`:'',
+      (rCnt-aCnt)>0?`<span class="pill pill-inactive">○ ไม่ระบุ (${rCnt-aCnt})</span>`:'',
+      pSum>0?`<span class="pill pill-price">💰 ${fmtPrice(pSum)}</span>`:'',
     ].join('');
 
     let gHtml='';
     groups.forEach(g=>{
       if(!g.rows.length)return;
+      const gSum=g.rows.reduce((ss,r)=>ss+parsePrice(r.price),0);
       gHtml+=`<div class="group-section">
         <div class="group-header">
           <span class="group-label ${m.gc}">🏢 ${g.name}</span>
           <span class="g-row-cnt">${g.rows.length} รายการ</span>
+          ${gSum>0?`<span class="g-price-total">💰 ${fmtPrice(gSum)}</span>`:''}
           <div class="group-divider"></div>
         </div>
-        <div class="table-wrap"><table>
-          <thead><tr><th>NO.</th><th>สาขา</th><th>Company</th><th>หมายเลข</th><th>รหัสลูกค้า</th><th>ราคา</th><th>สถานะ</th><th>หมายเหตุ</th></tr></thead>
+        <div class="table-wrap">
+          ${tblHead(true)}
           <tbody>${g.rows.map(r=>rowPRow(r,'')).join('')}</tbody>
-        </table></div>
+          </table>
+        </div>
       </div>`;
     });
 
@@ -801,20 +956,15 @@ function renderPhone(wb){
 
   if(curPage==='phone'){
     rebuildTabs('phone');
-    document.getElementById('total-count').textContent=tRows;
+    document.getElementById('total-count').textContent =tRows;
     document.getElementById('active-count').textContent=tActive;
+    updateCostDisplay();
   }
 }
 
-// ──────────────────────────────────────────────
-// LOAD
-// ──────────────────────────────────────────────
-function showLoad(id,c){
-  document.getElementById(id).innerHTML=`<div class="loading-wrap"><div class="loader" style="${c?'border-top-color:'+c+';':''}"></div><p>กำลังโหลดข้อมูลผ่าน API ขององค์กร…</p></div>`;
-}
-function showErr(id,msg){
-  document.getElementById(id).innerHTML=`<div class="error-wrap"><h3>⚠️ ไม่สามารถโหลดข้อมูลได้</h3><p><strong>Error:</strong> ${msg}</p><button class="refresh-btn" onclick="refreshCurrentPage()" style="margin-top:12px;">↻ ลองใหม่</button></div>`;
-}
+// ── LOAD ──
+function showLoad(id,c){ document.getElementById(id).innerHTML=`<div class="loading-wrap"><div class="loader" style="${c?'border-top-color:'+c+';':''}"></div><p>กำลังโหลดข้อมูลผ่าน API ขององค์กร…</p></div>`; }
+function showErr(id,msg){ document.getElementById(id).innerHTML=`<div class="error-wrap"><h3>⚠️ ไม่สามารถโหลดข้อมูลได้</h3><p><strong>Error:</strong> ${msg}</p><button class="refresh-btn" onclick="refreshCurrentPage()" style="margin-top:12px;">↻ ลองใหม่</button></div>`; }
 
 async function loadInternet(){
   document.getElementById('refresh-btn').classList.add('spinning');
@@ -837,11 +987,6 @@ async function loadPhone(){
     document.getElementById('tabs-container').innerHTML='';
     document.getElementById('filter-bar').classList.add('hidden');
   }
-  if(PHONE_API_URL.includes('ใส่ลิ้งก์')){
-    document.getElementById('page-phone').innerHTML=`<div class="error-wrap"><h3>⚙️ ยังไม่ได้ตั้งค่า API เบอร์โทรศัพท์</h3><p>กรุณานำ HTTP POST URL จาก Power Automate ใส่ในตัวแปร <code>PHONE_API_URL</code></p></div>`;
-    document.getElementById('refresh-btn').classList.remove('spinning');
-    return;
-  }
   try{
     const res=await fetch(PHONE_API_URL,{method:'POST',headers:{'Content-Type':'application/json'}});
     if(!res.ok)throw new Error(`HTTP ${res.status}`);
@@ -857,7 +1002,6 @@ function refreshCurrentPage(){
   else{loaded.phone=false;loadPhone();}
 }
 
-// INIT
 loadInternet();
 </script>
 </body>
