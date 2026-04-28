@@ -1,1 +1,4 @@
-# First Version
+# Update Patch
+    - ปรับหน้าตา UI 
+    - เพิ่มหน้าต่างยกเลิก
+    - เพิ่มค่าใช้จ่ายในแต่ละ Company
