@@ -19,7 +19,7 @@
       /* 3BB */
       --bb3:#ff6600;       --bb3-dim:rgba(255,102,0,0.15);
       /* DTAC */
-      --dtac:#e11d48;      --dtac-dim:rgba(225,29,72,0.15);
+      --dtac:#00ace6;      --dtac-dim:rgba(0,172,230,0.15);
       /* NT — CI Yellow */
       --nt:#f5a800;        --nt-dim:rgba(245,168,0,0.15);
 
@@ -39,7 +39,7 @@
       --tot:#0550ae;   --tot-dim:rgba(5,80,174,0.08);
       --ais:#006b31;   --ais-dim:rgba(0,107,49,0.08);
       --bb3:#d44000;   --bb3-dim:rgba(212,64,0,0.08);
-      --dtac:#be123c;  --dtac-dim:rgba(190,18,60,0.08);
+      --dtac:#0090c0;  --dtac-dim:rgba(0,144,192,0.08);
       --nt:#b87900;    --nt-dim:rgba(184,121,0,0.08);
       --active:#1a7f37;   --active-bg:rgba(26,127,55,0.10);
       --cancel:#cf222e;   --cancel-bg:rgba(207,34,46,0.10);
@@ -171,14 +171,14 @@
     .banner-TOT {background:var(--tot-dim);  border-color:rgba(0,102,204,.3);  color:var(--tot);}
     .banner-AIS {background:var(--ais-dim);  border-color:rgba(0,132,61,.3);   color:var(--ais);}
     .banner-3BB {background:var(--bb3-dim);  border-color:rgba(255,102,0,.3);  color:var(--bb3);}
-    .banner-DTAC{background:var(--dtac-dim); border-color:rgba(225,29,72,.3);  color:var(--dtac);}
+    .banner-DTAC{background:var(--dtac-dim); border-color:rgba(0,172,230,.3);  color:var(--dtac);}
     .banner-NT  {background:var(--nt-dim);   border-color:rgba(245,168,0,.3);  color:var(--nt);}
     .carrier-logo{width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;flex-shrink:0;}
     .logo-TRUE{background:var(--true);            color:#fff;}
     .logo-TOT {background:var(--tot);             color:#fff;}
     .logo-AIS {background:#00843d;                color:#fff;}
     .logo-3BB {background:var(--bb3);             color:#fff;}
-    .logo-DTAC{background:linear-gradient(135deg,#e11d48,#fb7185); color:#fff;}
+    .logo-DTAC{background:linear-gradient(135deg,#00ace6,#5dd4f5); color:#fff;}
     .logo-NT  {background:#f5a800;                color:#1a1a1a;}
     .banner-info h2{font-size:1.25rem;font-weight:700;}
     .banner-info p{font-size:.85rem;opacity:.7;}
@@ -200,7 +200,7 @@
     .group-label-TOT {background:var(--tot-dim);  color:#4da6ff;        border:1px solid rgba(0,102,204,.25);}
     .group-label-AIS {background:var(--ais-dim);  color:var(--ais);     border:1px solid rgba(0,132,61,.25);}
     .group-label-3BB {background:var(--bb3-dim);  color:#ff884d;        border:1px solid rgba(255,102,0,.25);}
-    .group-label-DTAC{background:var(--dtac-dim); color:var(--dtac);    border:1px solid rgba(225,29,72,.25);}
+    .group-label-DTAC{background:var(--dtac-dim); color:var(--dtac);    border:1px solid rgba(0,172,230,.25);}
     .group-label-NT  {background:var(--nt-dim);   color:var(--nt);      border:1px solid rgba(245,168,0,.25);}
     .group-company{font-size:.8rem;color:var(--text-muted);}
     .group-divider{flex:1;height:1px;background:var(--border);}
@@ -260,6 +260,49 @@
     .no-result-icon{font-size:2.5rem;display:block;margin-bottom:10px;opacity:.6;}
     .last-updated{font-size:.75rem;color:var(--text-muted);display:flex;align-items:center;gap:5px;margin-bottom:18px;}
     .last-updated span{color:var(--stat-num);}
+
+    /* ── CLICKABLE PHONE ── */
+    .phone-num{cursor:pointer;transition:color .15s;position:relative;}
+    .phone-num:hover{color:#fff;text-decoration:underline;}
+    .phone-num::after{content:'📋';font-size:.65rem;margin-left:4px;opacity:0;transition:opacity .15s;vertical-align:middle;}
+    .phone-num:hover::after{opacity:1;}
+
+    /* ── PHONE CARD MODAL ── */
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .2s;pointer-events:none;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .phone-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:0;width:100%;max-width:400px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);transform:scale(.94) translateY(10px);transition:transform .22s cubic-bezier(.34,1.56,.64,1);}
+    .modal-overlay.open .phone-card{transform:scale(1) translateY(0);}
+
+    /* card header band */
+    .pc-header{padding:28px 24px 26px;position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;border-radius:20px 20px 0 0;}
+    .pc-carrier-badge{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;margin-bottom:2px;box-shadow:0 6px 20px rgba(0,0,0,.35);}
+    .pc-carrier-name{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.85;color:#fff;}
+    .pc-number{font-size:2rem;font-weight:800;font-family:'Courier New',monospace;letter-spacing:.12em;color:#fff;margin-top:2px;text-shadow:0 2px 8px rgba(0,0,0,.2);}
+    .pc-close{position:absolute;top:14px;right:16px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.15);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:rgba(255,255,255,.75);font-size:.9rem;transition:all .15s;flex-shrink:0;}
+    .pc-close:hover{background:rgba(0,0,0,.45);color:#fff;}
+
+    /* card body */
+    .pc-body{padding:20px 20px 20px;display:flex;flex-direction:column;gap:10px;}
+    .pc-info-row{display:flex;gap:8px;}
+    .pc-info-item{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;display:flex;flex-direction:column;gap:3px;min-width:0;}
+    .pc-info-label{font-size:.67rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);}
+    .pc-info-val{font-size:.88rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .pc-info-val.mono{font-family:'Courier New',monospace;color:var(--phone-color);}
+    .pc-status-row{display:flex;gap:8px;align-items:stretch;}
+    .pc-status-box{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;}
+    .pc-note-box{flex:2;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.25);border-radius:10px;padding:10px 14px;}
+    .pc-note-val{font-size:.82rem;color:#fbbf24;line-height:1.5;}
+    .pc-note-empty{font-size:.82rem;color:var(--text-muted);}
+
+    /* action buttons */
+    .pc-actions{display:flex;gap:8px;margin-top:4px;}
+    .pc-btn{flex:1;padding:12px 8px;border-radius:12px;border:none;font-family:'Sarabun',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .18s;text-decoration:none;}
+    .pc-btn-call{background:var(--active);color:#fff;}
+    .pc-btn-call:hover{filter:brightness(1.1);transform:translateY(-1px);}
+    .pc-btn-copy{background:var(--surface2);border:1px solid var(--border);color:var(--text);}
+    .pc-btn-copy:hover{background:var(--border);transform:translateY(-1px);}
+    .pc-btn-copy.copied{background:var(--active-bg);border-color:var(--active);color:var(--active);}
+    .pc-hint{text-align:center;font-size:.72rem;color:var(--text-muted);padding:0 20px 16px;}
 
     footer{text-align:center;padding:20px;color:var(--text-muted);font-size:.8rem;border-top:1px solid var(--border);margin-top:12px;}
 
@@ -376,6 +419,51 @@
 </main>
 
 <footer>SEE FAH GROUP · ระบบข้อมูลเบอร์ · IT & POS DEPARTMENT</footer>
+
+<!-- ═══════ PHONE CARD MODAL ═══════ -->
+<div class="modal-overlay" id="phone-modal" onclick="closePhoneModal(event)">
+  <div class="phone-card" id="phone-card">
+    <div class="pc-header" id="pc-header">
+      <button class="pc-close" onclick="closePhoneModal(null,true)" title="ปิด">✕</button>
+      <div class="pc-carrier-badge" id="pc-carrier-badge"></div>
+      <span class="pc-carrier-name" id="pc-carrier-name"></span>
+      <div class="pc-number" id="pc-number"></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-info-row">
+        <div class="pc-info-item">
+          <span class="pc-info-label">สาขา</span>
+          <span class="pc-info-val mono" id="pc-branch"></span>
+        </div>
+        <div class="pc-info-item">
+          <span class="pc-info-label">ราคา/เดือน</span>
+          <span class="pc-info-val" id="pc-price"></span>
+        </div>
+      </div>
+      <div class="pc-info-row">
+        <div class="pc-info-item" style="flex:2">
+          <span class="pc-info-label">บริษัท</span>
+          <span class="pc-info-val" id="pc-company"></span>
+        </div>
+        <div class="pc-info-item">
+          <span class="pc-info-label">สถานะ</span>
+          <span id="pc-status"></span>
+        </div>
+      </div>
+      <div class="pc-status-row">
+        <div class="pc-note-box">
+          <div class="pc-info-label" style="margin-bottom:4px">หมายเหตุ</div>
+          <div id="pc-note"></div>
+        </div>
+      </div>
+      <div class="pc-actions">
+        <a class="pc-btn pc-btn-call" id="pc-call-btn" href="#">📞 โทรออก</a>
+        <button class="pc-btn pc-btn-copy" id="pc-copy-btn" onclick="copyPhoneNumber()">📋 คัดลอก</button>
+      </div>
+    </div>
+    <div class="pc-hint">💡 แคปหน้าจอหรือกด <strong>โทรออก</strong> ได้เลย</div>
+  </div>
+</div>
 
 <script>
 // ── API URLs ──
@@ -519,7 +607,7 @@ function renderCancelPanels(sub){
         </div>
         <div class="table-wrap">
           ${tblHead(sub==='phone')}
-          <tbody>${g.rows.map(r=>sub==='phone'?rowPRow(r,''):rowIRow(r,'')).join('')}</tbody>
+          <tbody>${g.rows.map(r=>sub==='phone'?rowPRow(r,'',carrier):rowIRow(r,'',carrier)).join('')}</tbody>
           </table>
         </div>
       </div>`;
@@ -604,24 +692,36 @@ function noteHTML(n,q){
 }
 
 // ── ROW BUILDERS ──
-function rowIRow(r,q){
+function rowIRow(r,q,carrier){
+  const ph=r.phone||'–';
+  const clickable=ph!=='–';
+  const c=carrier||curCarrier;
+  const phoneTd=clickable
+    ?`<td class="phone-num" data-phone="${escAttr(ph)}" data-branch="${escAttr(r.branch)}" data-company="${escAttr(r.company)}" data-price="${escAttr(r.price)}" data-status="${escAttr(r.status)}" data-note="${escAttr(r.note||'')}" data-carrier="${escAttr(c)}" data-type="internet" onclick="openPhoneCardFromEl(event,this)">${hl(ph,q)}</td>`
+    :`<td class="phone-num">${ph}</td>`;
   return`<tr>
     <td class="td-no">${r.no}</td>
     <td><span class="branch-tag">${hl(r.branch||'–',q)}</span></td>
     <td class="company-name" title="${r.company||''}">${hl(r.company||'–',q)}</td>
-    <td class="phone-num">${hl(r.phone||'–',q)}</td>
+    ${phoneTd}
     <td class="customer-id">${r.custId||'–'}</td>
     <td class="price-val">${r.price?'฿'+r.price:'–'}</td>
     <td>${sBadge(r.status)}</td>
     <td class="note-cell">${noteHTML(r.note,q)}</td>
   </tr>`;
 }
-function rowPRow(r,q){
+function rowPRow(r,q,carrier){
+  const ph=r.phone||'–';
+  const clickable=ph!=='–';
+  const c=carrier||curCarrier;
+  const phoneTd=clickable
+    ?`<td class="phone-num" data-phone="${escAttr(ph)}" data-branch="${escAttr(r.branch)}" data-company="${escAttr(r.company)}" data-price="${escAttr(r.price)}" data-status="${escAttr(r.status)}" data-note="${escAttr(r.note||'')}" data-carrier="${escAttr(c)}" data-type="phone" onclick="openPhoneCardFromEl(event,this)">${hl(ph,q)}</td>`
+    :`<td class="phone-num">${ph}</td>`;
   return`<tr>
     <td class="td-no">${r.no||'–'}</td>
     <td><span class="branch-tag">${hl(r.branch||'–',q)}</span></td>
     <td class="company-name" title="${r.company||''}">${hl(r.company||'–',q)}</td>
-    <td class="phone-num">${hl(r.phone||'–',q)}</td>
+    ${phoneTd}
     <td class="customer-id">${r.custId||'–'}</td>
     <td class="price-val">${r.price?'฿'+r.price:'–'}</td>
     <td>${sBadge(r.status)}</td>
@@ -646,17 +746,21 @@ function tblHead(isPhone){
 }
 
 // ── FILTER LOGIC ──
-function matches(r){
-  const{search:q,status,company,note:hasNote}=F;
+function matchesWithoutCompany(r){
+  const{search:q,status,note:hasNote}=F;
   if(status==='active'&&!r.status.includes('ใช้งานอยู่'))return false;
   if(status==='cancel'&&!r.status.includes('ยกเลิก')&&!r.status.includes('ระงับ'))return false;
   if(status==='other'&&(r.status.includes('ใช้งานอยู่')||r.status.includes('ยกเลิก')||r.status.includes('ระงับ')))return false;
-  if(company!=='all'&&r.company!==company)return false;
   if(hasNote&&(!r.note||r.note.trim()===''))return false;
   if(q){
     const hay=[r.branch,r.phone,r.company,r.note,r.custId].join(' ').toLowerCase();
     if(!hay.includes(q.toLowerCase()))return false;
   }
+  return true;
+}
+function matches(r){
+  if(!matchesWithoutCompany(r))return false;
+  if(F.company!=='all'&&r.company!==F.company)return false;
   return true;
 }
 function applyFilters(){
@@ -666,6 +770,20 @@ function applyFilters(){
   const panel=document.getElementById(`panel-${curPage}-${curCarrier}`);
   if(!panel)return;
   const q=F.search;
+
+  // Refresh company dropdown based on search+status (excluding company filter)
+  const preFilteredGroups=groups.map(g=>({
+    name:g.name,
+    rows:g.rows.filter(r=>matchesWithoutCompany(r))
+  })).filter(g=>g.rows.length>0);
+  const prevCo=document.getElementById('company-sel').value;
+  const cos=[...new Set(preFilteredGroups.flatMap(g=>g.rows.map(r=>r.company)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'th'));
+  const sel=document.getElementById('company-sel');
+  sel.innerHTML='<option value="all">— ทุกบริษัท —</option>';
+  cos.forEach(co=>{ const o=document.createElement('option'); o.value=o.textContent=co; sel.appendChild(o); });
+  if(cos.includes(prevCo)){sel.value=prevCo;F.company=prevCo;}
+  else{sel.value='all';F.company='all';}
+
   let vis=0;
   panel.querySelectorAll('.group-section').forEach((sec,gi)=>{
     const g=groups[gi];
@@ -713,8 +831,8 @@ function clearSearch(){ document.getElementById('search-input').value=''; docume
 function setStatus(s){ F.status=s; document.querySelectorAll('.sf-btn').forEach(b=>b.classList.toggle('active',b.dataset.status===s)); applyFilters(); }
 function setCompany(c){ F.company=c; applyFilters(); }
 function toggleNote(){ F.note=!F.note; document.getElementById('note-toggle').classList.toggle('active',F.note); applyFilters(); }
-function fillCompany(p,c){
-  const gs=store[p][c]||[];
+function fillCompany(p,c,filteredGroups){
+  const gs=filteredGroups||(store[p][c]||[]);
   const cos=[...new Set(gs.flatMap(g=>g.rows.map(r=>r.company)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'th'));
   const sel=document.getElementById('company-sel');
   const prev=sel.value;
@@ -857,7 +975,7 @@ function renderInternet(wb){
         </div>
         <div class="table-wrap">
           ${tblHead(false)}
-          <tbody>${g.rows.map(r=>rowIRow(r,'')).join('')}</tbody>
+          <tbody>${g.rows.map(r=>rowIRow(r,'',carrier)).join('')}</tbody>
           </table>
         </div>
       </div>`;
@@ -933,7 +1051,7 @@ function renderPhone(wb){
         </div>
         <div class="table-wrap">
           ${tblHead(true)}
-          <tbody>${g.rows.map(r=>rowPRow(r,'')).join('')}</tbody>
+          <tbody>${g.rows.map(r=>rowPRow(r,'',carrier)).join('')}</tbody>
           </table>
         </div>
       </div>`;
@@ -1001,6 +1119,87 @@ function refreshCurrentPage(){
   if(curPage==='internet'){loaded.internet=false;loadInternet();}
   else{loaded.phone=false;loadPhone();}
 }
+
+// ── PHONE CARD MODAL ──
+const CARRIER_COLOR={
+  TRUE:'#e4004b',TOT:'#0066cc',AIS:'#00843d','3BB':'#ff6600',DTAC:'#00ace6',NT:'#f5a800'
+};
+// darker shade for gradient end
+const CARRIER_COLOR_DARK={
+  TRUE:'#8a0029',TOT:'#003d7a',AIS:'#003d1c','3BB':'#993d00',DTAC:'#005f7a',NT:'#7a5200'
+};
+const CARRIER_TEXT_DARK={NT:true};
+
+function escAttr(v){ return String(v||'').replace(/'/g,'\u2019').replace(/"/g,'\u201d'); }
+
+function openPhoneCardFromEl(evt,el){
+  const d=el.dataset;
+  openPhoneCard(evt,d.phone,d.branch,d.company,d.price,d.status,d.note,d.carrier,d.type);
+}
+
+let _curPhoneNum='';
+function openPhoneCard(evt,phone,branch,company,price,status,note,carrier,type){
+  evt&&evt.stopPropagation();
+  _curPhoneNum=phone;
+  const col     = CARRIER_COLOR[carrier]     || '#388bfd';
+  const colDark = CARRIER_COLOR_DARK[carrier] || '#1a3a6b';
+
+  const hdr=document.getElementById('pc-header');
+  hdr.style.background=`linear-gradient(160deg,${col} 0%,${colDark} 100%)`;
+  hdr.style.borderBottom=`none`;
+
+  // badge: white semi-transparent box on top of the colored header
+  const badge=document.getElementById('pc-carrier-badge');
+  badge.style.background=`rgba(255,255,255,0.22)`;
+  badge.style.border=`2px solid rgba(255,255,255,0.45)`;
+  badge.style.color=`#fff`;
+  badge.textContent=carrier;
+
+  document.getElementById('pc-carrier-name').textContent=
+    type==='internet'?'อินเทอร์เน็ต':'โทรศัพท์';
+  document.getElementById('pc-number').textContent=phone;
+  document.getElementById('pc-branch').textContent=branch||'–';
+  document.getElementById('pc-company').textContent=company||'–';
+  document.getElementById('pc-price').textContent=price?'฿'+price:'–';
+  document.getElementById('pc-status').innerHTML=sBadge(status);
+
+  const noteEl=document.getElementById('pc-note');
+  if(note&&note.trim()&&note.trim()!=='-')
+    noteEl.innerHTML=`<span class="pc-note-val">${note}</span>`;
+  else noteEl.innerHTML='<span class="pc-note-empty">ไม่มีหมายเหตุ</span>';
+
+  const dialNum=phone.replace(/[^0-9+]/g,'');
+  document.getElementById('pc-call-btn').href=`tel:${dialNum}`;
+
+  const copyBtn=document.getElementById('pc-copy-btn');
+  copyBtn.textContent='📋 คัดลอก';
+  copyBtn.classList.remove('copied');
+
+  document.getElementById('phone-modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closePhoneModal(evt,force=false){
+  if(!force&&evt&&evt.target!==document.getElementById('phone-modal'))return;
+  document.getElementById('phone-modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function copyPhoneNumber(){
+  if(!_curPhoneNum)return;
+  const btn=document.getElementById('pc-copy-btn');
+  const done=()=>{btn.textContent='✓ คัดลอกแล้ว';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 คัดลอก';btn.classList.remove('copied');},2200);};
+  if(navigator.clipboard){navigator.clipboard.writeText(_curPhoneNum).then(done).catch(()=>{fallbackCopy();done();});}
+  else{fallbackCopy();done();}
+}
+function fallbackCopy(){
+  const ta=document.createElement('textarea');
+  ta.value=_curPhoneNum;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.focus();ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePhoneModal(null,true);});
 
 loadInternet();
 </script>
